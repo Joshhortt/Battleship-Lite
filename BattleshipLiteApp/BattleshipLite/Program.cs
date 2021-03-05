@@ -11,7 +11,16 @@ namespace BattleshipLite
 	{
 		static void Main(string[] args)
 		{
-			Console.ReadLine(); //  1. add this
+			WelcomeMessage();    // 3. calling the Welcome Message from the Method
+			Console.ReadLine(); //  1. add this right after creating new project.
+		}
+
+		private static void WelcomeMessage()  // 2.Method WelcomeMessager
+		{
+			// Hit F5 - Message print out to screen
+			Console.WriteLine("Welcome to Battleship Lite");
+			Console.WriteLine("Created by Josh Hortt");
+			Console.WriteLine();
 		}
 	}
 }
