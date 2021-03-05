@@ -43,7 +43,7 @@
   <ItemGroup>
     <Compile Include="Models\Enums.cs" />
     <Compile Include="Models\GridSpotModel.cs" />
-    <Compile Include="Models\PalayerInfoModel.cs" />
+    <Compile Include="Models\PlayerInfoModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

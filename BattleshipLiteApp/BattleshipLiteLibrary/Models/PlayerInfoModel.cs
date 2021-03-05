@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BattleshipLiteLibrary.Models
 {
-	public class PalayerInfoModel // 1. add public
+	public class PlayerInfoModel // 1. add public
 	{
 		// 4. properties
 		public string UserName { get; set; }
