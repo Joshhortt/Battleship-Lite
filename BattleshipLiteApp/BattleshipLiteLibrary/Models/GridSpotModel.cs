@@ -11,6 +11,8 @@ namespace BattleshipLiteLibrary.Models
 		// 3. add properties 
 		public string SpotLetter { get; set; }
 		public int SpotNumber { get; set; }
-		public int Status { get; set; }  // 0 = empty, 1 = ship, 2 = miss, 3 = hit, 4 = sunk
+
+		// 7. overwrite 'int' and put 'GridSpotStatus'
+		public GridSpotStatus Status { get; set; } = GridSpotStatus.Empty; // 8. And add '.empty' to 'GridSpotStatus' by default.
 	}
 }
