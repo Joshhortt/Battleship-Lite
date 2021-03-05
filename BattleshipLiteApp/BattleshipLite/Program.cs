@@ -1,5 +1,6 @@
 ﻿//II - Add new project Console Aplication
 
+using BattleshipLiteLibrary;
 using BattleshipLiteLibrary.Models;
 using System;
 using System.Collections.Generic;
@@ -27,15 +28,16 @@ namespace BattleshipLite
 		private static PlayerInfoModel CreatePlayer()  // 4. Add anothet method. Add also reference BattleshipLiteLibrary, 
 			                                                //and add using BattleshipLiteLibrary.Models on top;
 		{
-			PlayerInfoModel ouput = new PlayerInfoModel();  // 5. add new Instance
+			PlayerInfoModel output = new PlayerInfoModel();  // 5. add new Instance
 
 			// Ask the user for their name
-			ouput.UserName = AskForUsersName();
+			output.UserName = AskForUsersName();
 
 			// Load up the shot grid
-			
+			 GameLogic.InitializeGrid(output);  //18.  (cont.17 GameLogic)  remove output.ShotGrid =
 
 			// Ask the user for their 5 ship placements
+
 			// Clear
 		}
 		private static string AskForUsersName()  // 6. Add another string method. Asking users name and scope
@@ -44,6 +46,14 @@ namespace BattleshipLite
 			string output = Console.ReadLine();
 
 			return output;
+		}
+
+		private static void PlaceShips(PlayerInfoModel model)  // 19. Add ne method 
+		{
+			do
+			{
+				Console.Write("Where do you want to place your next ship: ");
+			} while (model.ShipLocations.Count < 5);
 		}
 	}
 }
