@@ -30,16 +30,21 @@ namespace BattleshipLiteLibrary
 				5
 			};
 			// 11. Adding Grid Items
-			foreach(string item in letters)  // 12. loop through to every single letter
+			foreach (string item in letters)  // 12. loop through to every single letter
 			{
 				foreach (int number in numbers)  // 13. Inside each letter we re going to loop through to every single number
-				{ 
+				{
 				}
 			}
 		}
-		private static void AddGridSpot(PlayerInfoModel model, string letter, string number) // 14. add new method
+		private static void AddGridSpot(PlayerInfoModel model, string letter, int number) // 14. add new method
 		{
-			                                                                                     
+			GridSpotModel spot = new GridSpotModel();
+			spot.SpotLetter = letter;
+			spot.SpotNumber = number;
+			spot.Status = GridSpotStatus.Empty;
 		}
 	}
 }
+
+
