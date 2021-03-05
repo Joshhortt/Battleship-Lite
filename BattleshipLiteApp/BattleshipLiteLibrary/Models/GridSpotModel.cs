@@ -11,6 +11,6 @@ namespace BattleshipLiteLibrary.Models
 		// 3. add properties 
 		public string SpotLetter { get; set; }
 		public int SpotNumber { get; set; }
-		public int Status { get; set; }  // 0 = empty, 1 = ship, 2 = miss, 3 = hit, 4 =
+		public int Status { get; set; }  // 0 = empty, 1 = ship, 2 = miss, 3 = hit, 4 = sunk
 	}
 }

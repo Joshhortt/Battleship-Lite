@@ -11,6 +11,6 @@ namespace BattleshipLiteLibrary.Models
 		// 4. properties
 		public string UserName { get; set; }
 		public List<GridSpotModel> ShipLocation { get; set; }
-		public List<GridSpotModel> ShotGrid { get; set; }
+		public List<GridSpotModel> ShotGrid { get; set; } // A1 - ... A5, B1 - ... B5 etc...
 	}
 }
