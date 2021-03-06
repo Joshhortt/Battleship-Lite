@@ -31,11 +31,23 @@ namespace BattleshipLite
 				RecordPlayerShot(activePlayer, opponentPlayer);  // 14. RecordPlayerShot of activePlayer & opponentPlayer. Create method from here, in here adding in User Interface logic (program.cs)
 
 				// Determine if the game is over
-				bool isGameOver = GameLogic.PlayerStillActive(opponentPlayer);    // 16. Add boolean if the game is over. Create method from here in 'GameLogic.cs'
+				bool doesGameContinue = GameLogic.PlayerStillActive(opponentPlayer);    // 16. Add boolean if game continues. Create method from here in 'GameLogic.cs'
+
 
 				// If over set activePlayer as the winner
 				// else, swap positions (activePlayer to opponentPlayer)
 
+				if(doesGameContinue == true)  // 17. Add if else condition if the game continues is true than do ..
+				{
+					PlayerInfoModel tempHolder = opponentPlayer;  // 18. Add temporary variable these 3 lines of code.
+					opponentPlayer = activePlayer;
+					activePlayer = tempHolder;
+				}
+				else
+				{
+					winner = activePlayer;  // 18. if false then the winner is the activePlayer 
+
+				}
 			} while (winner == null);
 
 			Console.ReadLine();
