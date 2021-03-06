@@ -28,21 +28,39 @@ namespace BattleshipLite
 				// Ask activePlayer for a shot
 				// Determine if it is a valid shot
 				// Determine shot results
+				RecordPlayerShot(activePlayer, opponentPlayer);  // 14. RecordPlayerShot of activePlayer & opponentPlayer. Create method from here, in here adding in User Interface logic (program.cs)
+
 				// Determine if the game is over
+				bool isGameOver = GameLogic.PlayerStillActive(opponentPlayer);    // 16. Add boolean if the game is over. Create method from here in 'GameLogic.cs'
+
 				// If over set activePlayer as the winner
 				// else, swap positions (activePlayer to opponentPlayer)
-
 
 			} while (winner == null);
 
 			Console.ReadLine();
 		}
 
+		private static void RecordPlayerShot(PlayerInfoModel activePlayer, PlayerInfoModel opponentPlayer)
+		{
+			// 15. Delete throw new NotImplementedException();
+
+			// We will crete here some kind of loop.
+			// Asks for a shot (we ask for 'B2')
+			// Determine what row and columnms that is  - split it apart
+			// Determinde if taht is a valid resulrt
+			// Go back to the beginning if not a valid shot
+
+			// Determine shot results
+			// Record results 
+
+ 		}
+
 		private static void DisplayShotGrid(PlayerInfoModel activePlayer)
 		{
 			string currentRow = activePlayer.ShotGrid[0].SpotLetter;  // 10. create variabe
 
-			//throw new NotImplementedException(); 6. Delete throw .....
+			// 6. Delete throw new NotImplementedException();
 
 			foreach (var gridSpot in activePlayer.ShotGrid)  // 7.b add forech loop gridSpot in ShotGrid
 			{
@@ -58,14 +76,14 @@ namespace BattleshipLite
 				}
 				else if(gridSpot.Status == GridSpotStatus.Hit)  // 11. adds a  x that's a hit
 				{
-					Console.WriteLine(" X ");  
+					Console.Write(" X ");  
 				}
 				else if(gridSpot.Status == GridSpotStatus.Miss)  // 12. adds a  o that's a miss
 				{
-					Console.WriteLine(" O ");  
+					Console.Write(" O ");  
 				}
 				else
-					Console.WriteLine(" ? ");  // 13. add question mark, means something is wrong
+					Console.Write(" ? ");  // 13. add question mark, means something is wrong
 			}
 		}
 

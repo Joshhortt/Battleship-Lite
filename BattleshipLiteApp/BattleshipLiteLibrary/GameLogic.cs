@@ -51,7 +51,12 @@ namespace BattleshipLiteLibrary
 			model.ShotGrid.Add(spot);  
 		}
 
-		public static bool PlaceShip(PlayerInfoModel model, string location)
+		public static bool PlaceShip(PlayerInfoModel model, string location) 
+		{
+			throw new NotImplementedException();
+		}
+
+		public static bool PlayerStillActive(PlayerInfoModel opponentPlayer)    // 16. Method created from program.cs
 		{
 			throw new NotImplementedException();
 		}
