@@ -15,6 +15,11 @@ namespace BattleshipLite
 		static void Main(string[] args)
 		{
 			WelcomeMessage();    // 3. calling the Welcome Message from the Method
+
+			PlayerInfoModel player1 = CreatePlayer("Player 1");  // 29. Create player 1
+			PlayerInfoModel player2 = CreatePlayer("Player 2");  // 30. Create player 2
+
+
 			Console.ReadLine(); //  1. add this right after creating new project.
 		}
 
@@ -25,10 +30,13 @@ namespace BattleshipLite
 			Console.WriteLine("Created by Josh Hortt");
 			Console.WriteLine();
 		}
-		private static PlayerInfoModel CreatePlayer()  // 4. Add anothet method. Add also reference BattleshipLiteLibrary, 
-													   //and add using BattleshipLiteLibrary.Models on top;
+		private static PlayerInfoModel CreatePlayer(string playerTitle)  // 4. Add another method. Add also reference BattleshipLiteLibrary, 
+													                     //and add using BattleshipLiteLibrary.Models on top;
+																		 // 31. Add parameters to CreatePlayer
 		{
 			PlayerInfoModel output = new PlayerInfoModel();  // 5. add new Instance
+
+			Console.WriteLine($"Player Information {playerTitle}");  // 32. Add player Info of player 1 or player 2.
 
 			// Ask the user for their name
 			output.UserName = AskForUsersName();
@@ -41,6 +49,8 @@ namespace BattleshipLite
 
 			// Clear 
 			Console.Clear();  // 27. Clear the screeen
+
+			return output;   // 28. return the output
 		}
 
 		private static string AskForUsersName()  // 6. Add another string method. Asking users name and scope

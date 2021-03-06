@@ -5,3 +5,6 @@ C:\Users\josec\Source\Repos\Battleship-Lite\BattleshipLiteApp\BattleshipLite\obj
 C:\Users\josec\Source\Repos\Battleship-Lite\BattleshipLiteApp\BattleshipLite\obj\Debug\BattleshipLite.csproj.CoreCompileInputs.cache
 C:\Users\josec\Source\Repos\Battleship-Lite\BattleshipLiteApp\BattleshipLite\obj\Debug\BattleshipLite.exe
 C:\Users\josec\Source\Repos\Battleship-Lite\BattleshipLiteApp\BattleshipLite\obj\Debug\BattleshipLite.pdb
+C:\Users\josec\Source\Repos\Battleship-Lite\BattleshipLiteApp\BattleshipLite\bin\Debug\BattleshipLiteLibrary.dll
+C:\Users\josec\Source\Repos\Battleship-Lite\BattleshipLiteApp\BattleshipLite\bin\Debug\BattleshipLiteLibrary.pdb
+C:\Users\josec\Source\Repos\Battleship-Lite\BattleshipLiteApp\BattleshipLite\obj\Debug\BattleshipLite.csproj.CopyComplete
