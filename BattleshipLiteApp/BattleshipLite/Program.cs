@@ -26,7 +26,7 @@ namespace BattleshipLite
 			Console.WriteLine();
 		}
 		private static PlayerInfoModel CreatePlayer()  // 4. Add anothet method. Add also reference BattleshipLiteLibrary, 
-			                                                //and add using BattleshipLiteLibrary.Models on top;
+													   //and add using BattleshipLiteLibrary.Models on top;
 		{
 			PlayerInfoModel output = new PlayerInfoModel();  // 5. add new Instance
 
@@ -34,12 +34,15 @@ namespace BattleshipLite
 			output.UserName = AskForUsersName();
 
 			// Load up the shot grid
-			 GameLogic.InitializeGrid(output);  //18.  (cont.17 GameLogic)  remove output.ShotGrid =
+			GameLogic.InitializeGrid(output);  //18.  (cont.17 GameLogic)  remove output.ShotGrid =
 
 			// Ask the user for their 5 ship placements
+			PlaceShips(output);  // 26. Call method Placeships
 
-			// Clear
+			// Clear 
+			Console.Clear();  // 27. Clear the screeen
 		}
+
 		private static string AskForUsersName()  // 6. Add another string method. Asking users name and scope
 		{
 			Console.Write("What is your name: ");
@@ -48,11 +51,19 @@ namespace BattleshipLite
 			return output;
 		}
 
-		private static void PlaceShips(PlayerInfoModel model)  // 19. Add ne method 
+		private static void PlaceShips(PlayerInfoModel model)  // 19. Add new method 
 		{
-			do
+			do  // 20. do' while' loop - If you have less than 5 ships keep going around
 			{
-				Console.Write("Where do you want to place your next ship: ");
+				Console.Write($"Where do you want to place ship number { model.ShipLocations.Count + 1}: ");  // 21. Ask the user where they want to place ship
+				string location = Console.ReadLine();     // 22. capture response
+
+
+				bool isValidLocation = GameLogic.PlaceShip(model, location);   // 23. Generate a method from here that shows up in  class 'GameLogic.cs'. that returns a boolean
+				if(isValidLocation == false)  // 24 . if statment if the location of ship is false, then ...
+				{
+					Console.WriteLine("That was not a valid location. Please try again. ");  // 25. Prompt the user validation is false, cannot place ship ther, to try again
+				}
 			} while (model.ShipLocations.Count < 5);
 		}
 	}
