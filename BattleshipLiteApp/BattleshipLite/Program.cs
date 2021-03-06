@@ -1,6 +1,4 @@
-﻿//II - Add new project Console Aplication
-
-using BattleshipLiteLibrary;
+﻿using BattleshipLiteLibrary;
 using BattleshipLiteLibrary.Models;
 using System;
 using System.Collections.Generic;
@@ -14,46 +12,39 @@ namespace BattleshipLite
 	{
 		static void Main(string[] args)
 		{
-			WelcomeMessage();    // 3. calling the Welcome Message from the Method
+			WelcomeMessage();    
 
-			PlayerInfoModel player1 = CreatePlayer("Player 1");  // 29. Create player 1
-			PlayerInfoModel player2 = CreatePlayer("Player 2");  // 30. Create player 2
+			PlayerInfoModel player1 = CreatePlayer("Player 1");  
+			PlayerInfoModel player2 = CreatePlayer("Player 2");  
 
-
-			Console.ReadLine(); //  1. add this right after creating new project.
+			Console.ReadLine();
 		}
 
-		private static void WelcomeMessage()  // 2.Method WelcomeMessager
+		private static void WelcomeMessage() 
 		{
-			// Hit F5 - Message print out to screen
 			Console.WriteLine("Welcome to Battleship Lite");
 			Console.WriteLine("Created by Josh Hortt");
 			Console.WriteLine();
 		}
-		private static PlayerInfoModel CreatePlayer(string playerTitle)  // 4. Add another method. Add also reference BattleshipLiteLibrary, 
-													                     //and add using BattleshipLiteLibrary.Models on top;
-																		 // 31. Add parameters to CreatePlayer
+
+		private static PlayerInfoModel CreatePlayer(string playerTitle)  
 		{
-			PlayerInfoModel output = new PlayerInfoModel();  // 5. add new Instance
+			PlayerInfoModel output = new PlayerInfoModel();  
 
-			Console.WriteLine($"Player Information {playerTitle}");  // 32. Add player Info of player 1 or player 2.
+			Console.WriteLine($"Player Information {playerTitle}");
 
-			// Ask the user for their name
 			output.UserName = AskForUsersName();
 
-			// Load up the shot grid
-			GameLogic.InitializeGrid(output);  //18.  (cont.17 GameLogic)  remove output.ShotGrid =
+			GameLogic.InitializeGrid(output);  
 
-			// Ask the user for their 5 ship placements
-			PlaceShips(output);  // 26. Call method Placeships
+			PlaceShips(output); 
+ 
+			Console.Clear(); 
 
-			// Clear 
-			Console.Clear();  // 27. Clear the screeen
-
-			return output;   // 28. return the output
+			return output;  
 		}
 
-		private static string AskForUsersName()  // 6. Add another string method. Asking users name and scope
+		private static string AskForUsersName()  
 		{
 			Console.Write("What is your name: ");
 			string output = Console.ReadLine();
@@ -61,18 +52,17 @@ namespace BattleshipLite
 			return output;
 		}
 
-		private static void PlaceShips(PlayerInfoModel model)  // 19. Add new method 
+		private static void PlaceShips(PlayerInfoModel model) 
 		{
-			do  // 20. do' while' loop - If you have less than 5 ships keep going around
+			do 
 			{
-				Console.Write($"Where do you want to place ship number { model.ShipLocations.Count + 1}: ");  // 21. Ask the user where they want to place ship
-				string location = Console.ReadLine();     // 22. capture response
+				Console.Write($"Where do you want to place ship number { model.ShipLocations.Count + 1}: ");  
+				string location = Console.ReadLine();   
 
-
-				bool isValidLocation = GameLogic.PlaceShip(model, location);   // 23. Generate a method from here that shows up in  class 'GameLogic.cs'. that returns a boolean
-				if(isValidLocation == false)  // 24 . if statment if the location of ship is false, then ...
+				bool isValidLocation = GameLogic.PlaceShip(model, location);   
+				if(isValidLocation == false) 
 				{
-					Console.WriteLine("That was not a valid location. Please try again. ");  // 25. Prompt the user validation is false, cannot place ship ther, to try again
+					Console.WriteLine("That was not a valid location. Please try again. "); 
 				}
 			} while (model.ShipLocations.Count < 5);
 		}

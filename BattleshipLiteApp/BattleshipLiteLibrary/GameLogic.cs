@@ -1,5 +1,4 @@
-﻿//II - (cont.) after adding new project Console Aplication
-using BattleshipLiteLibrary.Models;
+﻿using BattleshipLiteLibrary.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace BattleshipLiteLibrary
 {
-	public class GameLogic  // 7. add public
+	public class GameLogic  
 	{
-		public static void InitializeGrid(PlayerInfoModel model)  // 8. add new method
+		public static void InitializeGrid(PlayerInfoModel model)  
 		{
-			List<string> letters = new List<string>  // 9. add ne List of letters
+			List<string> letters = new List<string>  
 			{
 				"A",
 				"B",
@@ -21,7 +20,7 @@ namespace BattleshipLiteLibrary
 				"E"
 			};
 
-			List<int> numbers = new List<int>  // 10. add ne List of numbers
+			List<int> numbers = new List<int>  
 			{
 				1,
 				2,
@@ -30,26 +29,25 @@ namespace BattleshipLiteLibrary
 				5
 			};
 
-			// 11. Adding Grid Items
-			foreach (string letter in letters)  // 12. loop through to every single letter
+			foreach (string letter in letters)  
 			{
-				foreach (int number in numbers)  // 13. Inside each letter we re going to loop through to every single number
+				foreach (int number in numbers)  
 				{
-					AddGridSpot(model, letter, number); //17. calling AddGridSpot
+					AddGridSpot(model, letter, number);
 				}
 			} 
 		}
 
-		private static void AddGridSpot(PlayerInfoModel model, string letter, int number) // 14. add new method
+		private static void AddGridSpot(PlayerInfoModel model, string letter, int number)
 		{
-			GridSpotModel spot = new GridSpotModel  // 15. new Instance Spot initialized
+			GridSpotModel spot = new GridSpotModel 
 			{
 				SpotLetter = letter,
 				SpotNumber = number,
 				Status = GridSpotStatus.Empty
 			};
 
-			model.ShotGrid.Add(spot);  // 16.
+			model.ShotGrid.Add(spot);  
 		}
 
 		public static bool PlaceShip(PlayerInfoModel model, string location)
