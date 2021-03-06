@@ -1,4 +1,5 @@
-﻿using BattleshipLiteLibrary.Models;
+﻿// III - Console App Creation part2
+using BattleshipLiteLibrary.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;

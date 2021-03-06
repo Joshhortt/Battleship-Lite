@@ -1,4 +1,5 @@
-﻿using BattleshipLiteLibrary;
+﻿// III - Console App Creation part2
+using BattleshipLiteLibrary;
 using BattleshipLiteLibrary.Models;
 using System;
 using System.Collections.Generic;
@@ -14,8 +15,23 @@ namespace BattleshipLite
 		{
 			WelcomeMessage();    
 
-			PlayerInfoModel player1 = CreatePlayer("Player 1");  
-			PlayerInfoModel player2 = CreatePlayer("Player 2");  
+			PlayerInfoModel activePlayer = CreatePlayer("Player 1");  // 3. Rename variable player1 to activePlayer
+			PlayerInfoModel opponentPlayer = CreatePlayer("Player 2");  // 4. Rename variable player2 to opponentPlayer
+			PlayerInfoModel winner = null;  // 1. Add variable
+
+			do  // 2. do while Loop
+			{ 
+				
+				// Display grid from activePlayer on where they fired
+				// Ask activePlayer for a shot
+				// Determine if it is a valid shot
+				// Determine shot results
+				// Determine if the game is over
+				// If over set activePlayer as the winner
+				// else, swap positions (activePlayer to opponentPlayer)
+
+
+			} while (winner == null);
 
 			Console.ReadLine();
 		}
