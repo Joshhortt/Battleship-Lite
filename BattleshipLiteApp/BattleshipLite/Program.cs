@@ -20,9 +20,11 @@ namespace BattleshipLite
 			PlayerInfoModel winner = null;  // 1. Add variable
 
 			do  // 2. do while Loop
-			{ 
-				
+			{
+
 				// Display grid from activePlayer on where they fired
+				DisplayShotGrid(activePlayer);  // 5. DisplayAShotGrid of activePlayer. Create method from here, in here adding in User Interface logic (program.cs)
+
 				// Ask activePlayer for a shot
 				// Determine if it is a valid shot
 				// Determine shot results
@@ -34,6 +36,20 @@ namespace BattleshipLite
 			} while (winner == null);
 
 			Console.ReadLine();
+		}
+
+		private static void DisplayShotGrid(PlayerInfoModel activePlayer)
+		{
+			string currentRow = activePlayer.ShotGrid[0].SpotLetter;  // 10. create variabe
+
+			//throw new NotImplementedException(); 6. Delete throw .....
+			foreach (var gridSpot in activePlayer.ShotGrid)  // 7. add forech
+			{
+				if (gridSpot.Status == GridSpotStatus.Empty)  // 8. add if statment
+				{
+					Console.Write($" { gridSpot.SpotLetter } { gridSpot.SpotNumber } ");  // 9. add Console.Write
+				}
+			}
 		}
 
 		private static void WelcomeMessage() 
