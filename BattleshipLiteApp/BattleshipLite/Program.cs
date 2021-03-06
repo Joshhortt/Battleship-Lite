@@ -43,12 +43,29 @@ namespace BattleshipLite
 			string currentRow = activePlayer.ShotGrid[0].SpotLetter;  // 10. create variabe
 
 			//throw new NotImplementedException(); 6. Delete throw .....
-			foreach (var gridSpot in activePlayer.ShotGrid)  // 7. add forech
+
+			foreach (var gridSpot in activePlayer.ShotGrid)  // 7.b add forech loop gridSpot in ShotGrid
 			{
+				if (gridSpot.SpotLetter != currentRow)  // 8.b add if statment
+				{
+					Console.WriteLine();  // 9.b add Console.WriteLine before you print ou 9. below
+					currentRow = gridSpot.SpotLetter;  // 10. add update currentRow werever you are on
+				}
+
 				if (gridSpot.Status == GridSpotStatus.Empty)  // 8. add if statment
 				{
 					Console.Write($" { gridSpot.SpotLetter } { gridSpot.SpotNumber } ");  // 9. add Console.Write
 				}
+				else if(gridSpot.Status == GridSpotStatus.Hit)  // 11. adds a  x that's a hit
+				{
+					Console.WriteLine(" X ");  
+				}
+				else if(gridSpot.Status == GridSpotStatus.Miss)  // 12. adds a  o that's a miss
+				{
+					Console.WriteLine(" O ");  
+				}
+				else
+					Console.WriteLine(" ? ");  // 13. add question mark, means something is wrong
 			}
 		}
 
