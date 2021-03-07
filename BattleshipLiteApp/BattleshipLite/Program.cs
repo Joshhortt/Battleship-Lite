@@ -77,18 +77,26 @@ namespace BattleshipLite
 
 			do
 			{
+				// Asks for a shot (we ask for 'B2')
 				string shot = AskForShot();  // 27. Add variable and calling Method & Created method 'AskForShot' from here
+
+				// Determine what row and columnms that is  - split it apart
 				(string row, int column) = GameLogic.SplitShotIntoRowAndColumn(shot);  // 33. Add 'Tuple' and method that will be created in 'GameLogic'
+			
+				// Determine if that is a valid result	
+				isValidShot = GameLogic.ValidateShot(activePlayer, row, column);  // 35. Add if validation is valid and create Method from here into 'GameLogic'
 
-			} while (isValidShot == false);  // or (!isValidShot)
+				// Show a warning message
+				if (isValidShot == false)  // 37. Add if the validation is false the show a message
+				{
+					Console.WriteLine("Invalid Shot Location. Please try again! ");  // 38. show a message
+				}
+
+				// Go back to the beginning if not a valid shot
+			} while (isValidShot == false);  // or (!isValidShot) -- If it's false the loop start's all over from the beginning.
 
 
-			// ### We will crete here some kind of loop.....###
-
-			// Asks for a shot (we ask for 'B2')
-			// Determine what row and columnms that is  - split it apart
-			// Determinde if taht is a valid resulrt
-			// Go back to the beginning if not a valid shot
+			
 			// Determine shot results
 			// Record results 
 		}

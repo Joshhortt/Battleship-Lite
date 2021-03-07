@@ -66,7 +66,12 @@ namespace BattleshipLiteLibrary
 			throw new NotImplementedException();
 		}
 
-		public static (string row, int column) SplitShotIntoRowAndColumn(string shot)
+		public static (string row, int column) SplitShotIntoRowAndColumn(string shot)   // 34. Created method form 33.'do while loop
+		{
+			throw new NotImplementedException();
+		}
+
+		public static bool ValidateShot(PlayerInfoModel activePlayer, string row, int column)  // 36. Created method form 34.'do while loop
 		{
 			throw new NotImplementedException();
 		}
