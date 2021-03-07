@@ -75,6 +75,11 @@ namespace BattleshipLiteLibrary
 		{
 			throw new NotImplementedException();
 		}
+
+		public static bool IdentifyShowResult(PlayerInfoModel opponentPlayer, string row, int column)  // 40. Created method form 39.'isAHit 
+		{
+			throw new NotImplementedException();
+		}
 	}
 }
 

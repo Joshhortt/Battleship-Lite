@@ -73,7 +73,9 @@ namespace BattleshipLite
 			// 15. Delete throw new NotImplementedException();
 
 			// 26. Add do while loop'
-			bool isValidShot = false; 
+			bool isValidShot = false;  
+			string row = "";          // 39.a declare row type
+			int column = 0;           // 39.b declare column type
 
 			do
 			{
@@ -81,8 +83,8 @@ namespace BattleshipLite
 				string shot = AskForShot();  // 27. Add variable and calling Method & Created method 'AskForShot' from here
 
 				// Determine what row and columnms that is  - split it apart
-				(string row, int column) = GameLogic.SplitShotIntoRowAndColumn(shot);  // 33. Add 'Tuple' and method that will be created in 'GameLogic'
-			
+				(row, column) = GameLogic.SplitShotIntoRowAndColumn(shot);  // 33. Add 'Tuple' and method that will be created in 'GameLogic'
+																		    //39.c removed types
 				// Determine if that is a valid result	
 				isValidShot = GameLogic.ValidateShot(activePlayer, row, column);  // 35. Add if validation is valid and create Method from here into 'GameLogic'
 
@@ -95,9 +97,9 @@ namespace BattleshipLite
 				// Go back to the beginning if not a valid shot
 			} while (isValidShot == false);  // or (!isValidShot) -- If it's false the loop start's all over from the beginning.
 
-
-			
 			// Determine shot results
+			bool isAHit = GameLogic.IdentifyShowResult(opponentPlayer, row, column);  // 39. Add if it is a hit identify shot results
+
 			// Record results 
 		}
 
