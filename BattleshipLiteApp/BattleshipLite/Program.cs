@@ -21,27 +21,32 @@ namespace BattleshipLite
 
 			do  // 2. do while Loop
 			{
-
 				// Display grid from activePlayer on where they fired
-				DisplayShotGrid(activePlayer);  // 5. DisplayAShotGrid of activePlayer. Create method from here, in here adding in User Interface logic (program.cs)
+				DisplayShotGrid(activePlayer);  // 5. DisplayAShotGrid of activePlayer. 
+			                                    // Create method from here, in here adding in User Interface logic (program.cs)
 
 				// Ask activePlayer for a shot
 				// Determine if it is a valid shot
 				// Determine shot results
-				RecordPlayerShot(activePlayer, opponentPlayer);  // 14. RecordPlayerShot of activePlayer & opponentPlayer. Create method from here, in here adding in User Interface logic (program.cs)
+				RecordPlayerShot(activePlayer, opponentPlayer);  // 14. RecordPlayerShot of activePlayer & opponentPlayer. 
+																//Create method from here, in here adding in User Interface logic (program.cs)
 
 				// Determine if the game is over
-				bool doesGameContinue = GameLogic.PlayerStillActive(opponentPlayer);    // 16. Add boolean if game continues. Create method from here in 'GameLogic.cs'
-
+				bool doesGameContinue = GameLogic.PlayerStillActive(opponentPlayer);  // 16. Add boolean if game continues. 
+				                                                                      // Create method from here in 'GameLogic.cs'
 
 				// If over set activePlayer as the winner
 				// else, swap positions (activePlayer to opponentPlayer)
 
 				if(doesGameContinue == true)  // 17. Add if else condition if the game continues is true than do ..
 				{
-					PlayerInfoModel tempHolder = opponentPlayer;  // 18. Add temporary variable these 3 lines of code.
-					opponentPlayer = activePlayer;
-					activePlayer = tempHolder;
+				    // ### Swap using a 'temp variable' * (before  C# 7.0 way of doing) ###
+					//PlayerInfoModel tempHolder = opponentPlayer;  // 19. Add temp variable these 3 lines of code.
+					//opponentPlayer = activePlayer;
+					//activePlayer = tempHolder;
+
+					// ### *New way of doing this. Use 'Tuple'(after  C# 7.0 way of doing) ###
+					(activePlayer, opponentPlayer) = (opponentPlayer, activePlayer);  // 20. Flip them around
 				}
 				else
 				{
@@ -57,15 +62,14 @@ namespace BattleshipLite
 		{
 			// 15. Delete throw new NotImplementedException();
 
-			// We will crete here some kind of loop.
+			// ### We will crete here some kind of loop.....###
+
 			// Asks for a shot (we ask for 'B2')
 			// Determine what row and columnms that is  - split it apart
 			// Determinde if taht is a valid resulrt
 			// Go back to the beginning if not a valid shot
-
 			// Determine shot results
 			// Record results 
-
  		}
 
 		private static void DisplayShotGrid(PlayerInfoModel activePlayer)
