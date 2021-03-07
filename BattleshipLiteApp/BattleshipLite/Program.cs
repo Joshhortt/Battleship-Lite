@@ -1,4 +1,4 @@
-﻿// III - Console App Creation part2
+﻿// IV -Wire up the logic
 using BattleshipLiteLibrary;
 using BattleshipLiteLibrary.Models;
 using System;
@@ -59,89 +59,78 @@ namespace BattleshipLite
 			Console.ReadLine();
 		}
 
-		private static void IdentifyWinner(PlayerInfoModel winner)  // 22. Method created
+		private static void IdentifyWinner(PlayerInfoModel winner) 
 		{
-			//throw new NotImplementedException();
-			Console.WriteLine($"Congratulations to {winner.UserName} for winning!");  // 23. Add message congratulating userName for winning
-			Console.WriteLine($"{ winner.UserName } took { GameLogic.GetShotCount(winner) } shots.");  // 24. Add another message right after tellig 
-			                                                                                           // the user that he took blank shots
-																								       // Create also 'GetShotCount' method in GameLogic.cs
+			Console.WriteLine($"Congratulations to {winner.UserName} for winning!");  
+			Console.WriteLine($"{ winner.UserName } took { GameLogic.GetShotCount(winner) } shots.");   	                                                                                           
 		}
 
 		private static void RecordPlayerShot(PlayerInfoModel activePlayer, PlayerInfoModel opponentPlayer)
 		{
-			// 15. Delete throw new NotImplementedException();
-
-			// 26. Add do while loop'
 			bool isValidShot = false;  
-			string row = "";          // 39.a declare row type
-			int column = 0;           // 39.b declare column type
+			string row = "";          
+			int column = 0;         
 
 			do
 			{
-				// Asks for a shot (we ask for 'B2')
-				string shot = AskForShot();  // 27. Add variable and calling Method & Created method 'AskForShot' from here
+				string shot = AskForShot(); 
 
 				// Determine what row and columnms that is  - split it apart
-				(row, column) = GameLogic.SplitShotIntoRowAndColumn(shot);  // 33. Add 'Tuple' and method that will be created in 'GameLogic'
-																		    //39.c removed types
+				(row, column) = GameLogic.SplitShotIntoRowAndColumn(shot);  
+																		    
 				// Determine if that is a valid result	
-				isValidShot = GameLogic.ValidateShot(activePlayer, row, column);  // 35. Add if validation is valid and create Method from here into 'GameLogic'
+				isValidShot = GameLogic.ValidateShot(activePlayer, row, column);  
 
 				// Show a warning message
-				if (isValidShot == false)  // 37. Add if the validation is false the show a message
+				if (isValidShot == false) 
 				{
-					Console.WriteLine("Invalid Shot Location. Please try again! ");  // 38. show a message
+					Console.WriteLine("Invalid Shot Location. Please try again! ");  
 				}
 
 				// Go back to the beginning if not a valid shot
-			} while (isValidShot == false);  // or (!isValidShot) -- If it's false the loop start's all over from the beginning.
+			} while (isValidShot == false);
 
 			// Determine shot results
-			bool isAHit = GameLogic.IdentifyShowResult(opponentPlayer, row, column);  // 39. Add if it is a hit identify shot results. create Method from here in 'GameLogic'
+			bool isAHit = GameLogic.IdentifyShowResult(opponentPlayer, row, column);  
 
 			// Record results 
-			GameLogic.MarkShotResult(activePlayer, row, column, isAHit);  // 41. Add record results. create Method from here in 'GameLogic'
+			GameLogic.MarkShotResult(activePlayer, row, column, isAHit);  
 		}
 
-		private static string AskForShot()  // 28. Method creted above from 27.' do while loop 
+		private static string AskForShot()  
 		{
-			//throw new NotImplementedException(); 29. comment or delete
+			Console.Write("Please enter your shot selection: "); 
+			string output = Console.ReadLine();  
 
-			Console.Write("Please enter your shot selection: ");  // 30. Add message
-			string output = Console.ReadLine();  // 31. Add capture what the user types in and return it
-
-			return output;  // 32. Add return output
+			return output; 
 		}
 
 		private static void DisplayShotGrid(PlayerInfoModel activePlayer)
 		{
-			string currentRow = activePlayer.ShotGrid[0].SpotLetter;  // 10. create variabe
+			string currentRow = activePlayer.ShotGrid[0].SpotLetter;  
 
-			// 6. Delete throw new NotImplementedException();
-
-			foreach (var gridSpot in activePlayer.ShotGrid)  // 7.b add forech loop gridSpot in ShotGrid
+			foreach (var gridSpot in activePlayer.ShotGrid) 
 			{
-				if (gridSpot.SpotLetter != currentRow)  // 8.b add if statment
+				if (gridSpot.SpotLetter != currentRow)
 				{
-					Console.WriteLine();  // 9.b add Console.WriteLine before you print ou 9. below
-					currentRow = gridSpot.SpotLetter;  // 10. add update currentRow werever you are on
+					Console.WriteLine();  
+					currentRow = gridSpot.SpotLetter; 
 				}
 
-				if (gridSpot.Status == GridSpotStatus.Empty)  // 8. add if statment
+				if (gridSpot.Status == GridSpotStatus.Empty) 
 				{
-					Console.Write($" { gridSpot.SpotLetter } { gridSpot.SpotNumber } ");  // 9. add Console.Write
+					Console.Write($" { gridSpot.SpotLetter } { gridSpot.SpotNumber } "); 
 				}
-				else if(gridSpot.Status == GridSpotStatus.Hit)  // 11. adds a  x that's a hit
+				else if(gridSpot.Status == GridSpotStatus.Hit)  
 				{
 					Console.Write(" X ");  
 				}
-				else if(gridSpot.Status == GridSpotStatus.Miss)  // 12. adds a  o that's a miss
+				else if(gridSpot.Status == GridSpotStatus.Miss) 
 				{
 					Console.Write(" O ");  
 				}
 				else
-					Console.Write(" ? ");  // 13. add question mark, means something is wrong
+					Console.Write(" ? "); 
 			}
 		}
 

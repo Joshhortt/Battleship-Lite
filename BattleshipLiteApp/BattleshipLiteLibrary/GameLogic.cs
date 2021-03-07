@@ -1,4 +1,4 @@
-﻿// III - Console App Creation part2
+﻿
 using BattleshipLiteLibrary.Models;
 using System;
 using System.Collections.Generic;
@@ -56,32 +56,32 @@ namespace BattleshipLiteLibrary
 			throw new NotImplementedException();
 		}
 
-		public static bool PlayerStillActive(PlayerInfoModel opponentPlayer)    // 16. Method created from program.cs
+		public static bool PlayerStillActive(PlayerInfoModel opponentPlayer)    
 		{
 			throw new NotImplementedException();
 		}
 
-		public static int GetShotCount(PlayerInfoModel winner)  // 25. Created method form IdentifyWinner method. Change 'object' to 'int'
+		public static int GetShotCount(PlayerInfoModel winner)  
 		{
 			throw new NotImplementedException();
 		}
 
-		public static (string row, int column) SplitShotIntoRowAndColumn(string shot)   // 34. Created method form 33.'do while loop
+		public static (string row, int column) SplitShotIntoRowAndColumn(string shot)  
 		{
 			throw new NotImplementedException();
 		}
 
-		public static bool ValidateShot(PlayerInfoModel activePlayer, string row, int column)  // 36. Created method form 34.'do while loop
+		public static bool ValidateShot(PlayerInfoModel activePlayer, string row, int column) 
 		{
 			throw new NotImplementedException();
 		}
 
-		public static bool IdentifyShowResult(PlayerInfoModel opponentPlayer, string row, int column)  // 40. Created method form 39.'isAHit 
+		public static bool IdentifyShowResult(PlayerInfoModel opponentPlayer, string row, int column)  
 		{
 			throw new NotImplementedException();
 		}
 
-		public static void MarkShotResult(PlayerInfoModel activePlayer, string row, int column, bool isAHit)  // 42. Created method form 41.'record results.
+		public static void MarkShotResult(PlayerInfoModel activePlayer, string row, int column, bool isAHit) 
 		{
 			throw new NotImplementedException();
 		}
