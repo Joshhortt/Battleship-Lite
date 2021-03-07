@@ -51,11 +51,21 @@ namespace BattleshipLite
 				else
 				{
 					winner = activePlayer;  // 18. if false then the winner is the activePlayer 
-
 				}
 			} while (winner == null);
 
+			IdentifyWinner(winner);    // 21. Add to Create method from here
+
 			Console.ReadLine();
+		}
+
+		private static void IdentifyWinner(PlayerInfoModel winner)  // 22. Method created
+		{
+			//throw new NotImplementedException();
+			Console.WriteLine($"Congratulations to {winner.UserName} for winning!");  // 23. Add message congratulating userName for winning
+			Console.WriteLine($"{ winner.UserName } took { GameLogic.GetShotCount(winner) } shots.");  // 24. Add another message right after tellig 
+			                                                                                           // the user that he took blank shots
+																								       // Create also 'GetShotCount' method in GameLogic.cs
 		}
 
 		private static void RecordPlayerShot(PlayerInfoModel activePlayer, PlayerInfoModel opponentPlayer)

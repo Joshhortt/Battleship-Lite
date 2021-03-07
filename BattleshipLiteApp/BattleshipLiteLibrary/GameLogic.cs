@@ -60,6 +60,11 @@ namespace BattleshipLiteLibrary
 		{
 			throw new NotImplementedException();
 		}
+
+		public static int GetShotCount(PlayerInfoModel winner)  // 25. Created method form IdentifyWinner method. Change 'object' to 'int'
+		{
+			throw new NotImplementedException();
+		}
 	}
 }
 
