@@ -15,46 +15,36 @@ namespace BattleshipLite
 		{
 			WelcomeMessage();    
 
-			PlayerInfoModel activePlayer = CreatePlayer("Player 1");  // 3. Rename variable player1 to activePlayer
-			PlayerInfoModel opponentPlayer = CreatePlayer("Player 2");  // 4. Rename variable player2 to opponentPlayer
-			PlayerInfoModel winner = null;  // 1. Add variable
+			PlayerInfoModel activePlayer = CreatePlayer("Player 1"); 
+			PlayerInfoModel opponentPlayer = CreatePlayer("Player 2"); 
+			PlayerInfoModel winner = null;  
 
-			do  // 2. do while Loop
+			do 
 			{
 				// Display grid from activePlayer on where they fired
-				DisplayShotGrid(activePlayer);  // 5. DisplayAShotGrid of activePlayer. 
-			                                    // Create method from here, in here adding in User Interface logic (program.cs)
-
+				DisplayShotGrid(activePlayer); 
+			                                    
 				// Ask activePlayer for a shot
 				// Determine if it is a valid shot
 				// Determine shot results
-				RecordPlayerShot(activePlayer, opponentPlayer);  // 14. RecordPlayerShot of activePlayer & opponentPlayer. 
-				//Create method from here, in here adding in User Interface logic (program.cs)
-
+				RecordPlayerShot(activePlayer, opponentPlayer);   
+				
 				// Determine if the game is over
-				bool doesGameContinue = GameLogic.PlayerStillActive(opponentPlayer);  // 16. Add boolean if game continues. 
-																					  // Create method from here in 'GameLogic.cs'
-
+				bool doesGameContinue = GameLogic.PlayerStillActive(opponentPlayer);  
+																					 
 				// If over set activePlayer as the winner
-				// else, swap positions (activePlayer to opponentPlayer)
-
-				if (doesGameContinue == true)  // 17. Add if else condition if the game continues is true than do ..
+				if (doesGameContinue == true)  
 				{
-				    // ### Swap using a 'temp variable' * (before  C# 7.0 way of doing) ###
-					//PlayerInfoModel tempHolder = opponentPlayer;  // 19. Add temp variable these 3 lines of code.
-					//opponentPlayer = activePlayer;
-					//activePlayer = tempHolder;
-
-					// ### *New way of doing this. Use 'Tuple'(after  C# 7.0 way of doing) ###
-					(activePlayer, opponentPlayer) = (opponentPlayer, activePlayer);  // 20. Flip them around
+				// swap positions (activePlayer to opponentPlayer)
+					(activePlayer, opponentPlayer) = (opponentPlayer, activePlayer); 
 				}
 				else
 				{
-					winner = activePlayer;  // 18. if false then the winner is the activePlayer 
+					winner = activePlayer; 
 				}
 			} while (winner == null);
 
-			IdentifyWinner(winner);    // 21. Add to Create method from here
+			IdentifyWinner(winner);   
 
 			Console.ReadLine();
 		}
