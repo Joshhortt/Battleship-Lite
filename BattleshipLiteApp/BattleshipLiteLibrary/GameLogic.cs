@@ -65,6 +65,11 @@ namespace BattleshipLiteLibrary
 		{
 			throw new NotImplementedException();
 		}
+
+		public static (string row, int column) SplitShotIntoRowAndColumn(string shot)
+		{
+			throw new NotImplementedException();
+		}
 	}
 }
 

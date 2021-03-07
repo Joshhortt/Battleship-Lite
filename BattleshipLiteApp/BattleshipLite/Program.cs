@@ -78,6 +78,7 @@ namespace BattleshipLite
 			do
 			{
 				string shot = AskForShot();  // 27. Add variable and calling Method & Created method 'AskForShot' from here
+				(string row, int column) = GameLogic.SplitShotIntoRowAndColumn(shot);  // 33. Add 'Tuple' and method that will be created in 'GameLogic'
 
 			} while (isValidShot == false);  // or (!isValidShot)
 
@@ -97,7 +98,7 @@ namespace BattleshipLite
 			//throw new NotImplementedException(); 29. comment or delete
 
 			Console.Write("Please enter your shot selection: ");  // 30. Add message
-			string output = Console.ReadLine();  // 31. Add 
+			string output = Console.ReadLine();  // 31. Add capture what the user types in and return it
 
 			return output;  // 32. Add return output
 		}
