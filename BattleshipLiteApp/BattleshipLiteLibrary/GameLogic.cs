@@ -80,6 +80,11 @@ namespace BattleshipLiteLibrary
 		{
 			throw new NotImplementedException();
 		}
+
+		public static void MarkShotResult(PlayerInfoModel activePlayer, string row, int column, bool isAHit)  // 42. Created method form 41.'record results.
+		{
+			throw new NotImplementedException();
+		}
 	}
 }
 

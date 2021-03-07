@@ -98,9 +98,10 @@ namespace BattleshipLite
 			} while (isValidShot == false);  // or (!isValidShot) -- If it's false the loop start's all over from the beginning.
 
 			// Determine shot results
-			bool isAHit = GameLogic.IdentifyShowResult(opponentPlayer, row, column);  // 39. Add if it is a hit identify shot results
+			bool isAHit = GameLogic.IdentifyShowResult(opponentPlayer, row, column);  // 39. Add if it is a hit identify shot results. create Method from here in 'GameLogic'
 
 			// Record results 
+			GameLogic.MarkShotResult(activePlayer, row, column, isAHit);  // 41. Add record results. create Method from here in 'GameLogic'
 		}
 
 		private static string AskForShot()  // 28. Method creted above from 27.' do while loop 
