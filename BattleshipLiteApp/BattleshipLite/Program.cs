@@ -94,7 +94,7 @@ namespace BattleshipLite
 			{
 				Console.WriteLine($"{ row } { column } is a Miss!"); // Debugging - 20.txt -  3.  string interpolation
 			}
-			Console.WriteLine();  // Debugging - 3.  txt -  3. add blank line
+			Console.WriteLine();  // Debugging - 20.txt -  3. add blank line
 		}
 
 		private static string AskForShot(PlayerInfoModel player)  //   Debugging - 14. txt - 2. Pass in PlayerInfoModel player
@@ -123,14 +123,14 @@ namespace BattleshipLite
 				}
 				else if(gridSpot.Status == GridSpotStatus.Hit)  
 				{
-					Console.Write(" X ");  
+					Console.Write(" X  ");  //   Debugging - 21. txt - 4. Add spacing after hit letter
 				}
 				else if(gridSpot.Status == GridSpotStatus.Miss) 
 				{
-					Console.Write(" O ");  
+					Console.Write(" O  ");  //   Debugging - 22. txt - 4. Add spacing after miss letter
 				}
 				else
-					Console.Write(" ? "); 
+					Console.Write(" ?  ");  //   Debugging - 23. txt - 4. Add spacing after Question mark
 			}
 			Console.WriteLine();  // Debugging - 11. txt - 1. After the grid displays, we need to empty lines. (Console.WriteLine)
 			Console.WriteLine();  // Debugging - 12.txt -  1. After the grid displays, we need to empty lines. (Console.WriteLine)
