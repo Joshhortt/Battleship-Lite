@@ -53,6 +53,39 @@ namespace BattleshipLiteLibrary
 
 		public static bool PlaceShip(PlayerInfoModel model, string location) 
 		{
+			// 0. throw new NotImplementedException();
+
+			bool output = false; // 11. add boolean = false
+
+			(string row, int column) = SplitShotIntoRowAndColumn(location); // 1. Copy parameters of row and column from 'SplitShotIntoRowAndColumn' method.
+
+			bool isValidLocation = ValidateGridLocation(model, row, column);   // 6. Validation is going to determine if it on the grid. 
+																			   // Created from here a method below.
+
+			bool isSpotOpen = ValidateShipLocation(model, row, column);   // 8. Validation is going to determine if it on right grid spot or not. 
+																		  // Looking at ships that already been placed. Is there already a ship here?
+																		  // Created from here a method below.
+
+			if (isValidLocation && isSpotOpen)  // 10. surround (2.,3.,4., and 5.) with if snippet
+			{
+				model.ShipLocations.Add(new GridSpotModel  // 2. 
+				{
+					SpotLetter = row,  // 3. 
+					SpotNumber = column,  // 4. 
+					Status = GridSpotStatus.Ship  // 5. there's a ship here that is not sunk
+				});
+				output = true; // 12. bool output (true - place ship)
+			}
+			return output;  // 13. return statement (false -  do nothing)
+		}
+
+		private static bool ValidateShipLocation(PlayerInfoModel model, string row, int column)  // 9. method created from 8..
+		{
+			throw new NotImplementedException();
+		}
+
+		private static bool ValidateGridLocation(PlayerInfoModel model, string row, int column)  // 7. method created from 6.
+		{
 			throw new NotImplementedException();
 		}
 
