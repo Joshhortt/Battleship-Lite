@@ -1,4 +1,4 @@
-﻿// V - Debugging & Testing
+﻿//Final Application
 using BattleshipLiteLibrary.Models;
 using System;
 using System.Collections.Generic;
@@ -174,7 +174,7 @@ namespace BattleshipLiteLibrary
 				if (ship.SpotLetter == row.ToUpper() && ship.SpotNumber == column)  
 				{
 					isAHit = true;
-					ship.Status = GridSpotStatus.Sunk;  // Debugging - 01.the ship has being sunk
+					ship.Status = GridSpotStatus.Sunk;  
 				}
 			}
 			return isAHit; 

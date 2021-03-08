@@ -1,4 +1,4 @@
-﻿// V - Debugging & Testing
+﻿//Final Application
 using BattleshipLiteLibrary;
 using BattleshipLiteLibrary.Models;
 using System;
@@ -50,26 +50,25 @@ namespace BattleshipLite
 
 		private static void RecordPlayerShot(PlayerInfoModel activePlayer, PlayerInfoModel opponentPlayer)
 		{
-			bool isValidShot = false;  
-			string row = "";          
+			string row = "";
 			int column = 0;
 
+			bool isValidShot;
 			do
 			{
-				string shot = AskForShot(activePlayer);  //   Debugging - 13. txt - 2. Pass in activePlayer
+				string shot = AskForShot(activePlayer);
 
 				try
 				{
-					(row, column) = GameLogic.SplitShotIntoRowAndColumn(shot);  // Debugging - 02. Sourround these two lines with 'try' and 'catch'.
+					(row, column) = GameLogic.SplitShotIntoRowAndColumn(shot);
 					isValidShot = GameLogic.ValidateShot(activePlayer, row, column);
 				}
-				catch (Exception)  // Debugging - 03. Add 'ex' to Exception
+				catch (Exception)
 				{
-					//throw;
 
-					isValidShot = false;  // // Debugging - 04. Removed Error message and add bool
+					isValidShot = false;
 				}
-					
+
 				if (isValidShot == false)
 				{
 					Console.WriteLine("Invalid Shot Location. Please try again! ");
@@ -79,27 +78,25 @@ namespace BattleshipLite
 			bool isAHit = GameLogic.IdentifyShotResult(opponentPlayer, row, column);
 		
 			GameLogic.MarkShotResult(activePlayer, row, column, isAHit);
-			DisplayShotResult(row, column, isAHit);   // Debugging - 16.txt -  3.  To tell us the result of the shot.
-													  // Create method below
+			DisplayShotResult(row, column, isAHit);   										 
 		}
 
-		private static void DisplayShotResult(string row, int column, bool isAHit)   //  Debugging - 17.txt -  3. Method created from 16.
+		private static void DisplayShotResult(string row, int column, bool isAHit)   
 		{
-			//throw new NotImplementedException();
-			if(isAHit) // Debugging - 18.txt -  3.  if is it a hit
+			if(isAHit) 
 			{
-				Console.WriteLine($"{ row } { column } is a Hit!"); // Debugging - 19.txt -  3.  string interpolation
+				Console.WriteLine($"{ row } { column } is a Hit!"); 
 			}
 			else
 			{
-				Console.WriteLine($"{ row } { column } is a Miss!"); // Debugging - 20.txt -  3.  string interpolation
+				Console.WriteLine($"{ row } { column } is a Miss!"); 
 			}
-			Console.WriteLine();  // Debugging - 20.txt -  3. add blank line
+			Console.WriteLine(); 
 		}
 
-		private static string AskForShot(PlayerInfoModel player)  //   Debugging - 14. txt - 2. Pass in PlayerInfoModel player
+		private static string AskForShot(PlayerInfoModel player)  
 		{
-			Console.Write($"{player.UserName }, Please enter your shot selection: ");  //   Debugging - 15. txt - 2. Add string interpolation
+			Console.Write($"{player.UserName }, Please enter your shot selection: ");  
 			string output = Console.ReadLine();  
 
 			return output; 
@@ -123,17 +120,17 @@ namespace BattleshipLite
 				}
 				else if(gridSpot.Status == GridSpotStatus.Hit)  
 				{
-					Console.Write(" X  ");  //   Debugging - 21. txt - 4. Add spacing after hit letter
+					Console.Write(" X  ");  
 				}
 				else if(gridSpot.Status == GridSpotStatus.Miss) 
 				{
-					Console.Write(" O  ");  //   Debugging - 22. txt - 4. Add spacing after miss letter
+					Console.Write(" O  ");  
 				}
 				else
-					Console.Write(" ?  ");  //   Debugging - 23. txt - 4. Add spacing after Question mark
+					Console.Write(" ?  ");  
 			}
-			Console.WriteLine();  // Debugging - 11. txt - 1. After the grid displays, we need to empty lines. (Console.WriteLine)
-			Console.WriteLine();  // Debugging - 12.txt -  1. After the grid displays, we need to empty lines. (Console.WriteLine)
+			Console.WriteLine();  
+			Console.WriteLine();  
 		}
 
 		private static void WelcomeMessage() 
@@ -175,19 +172,16 @@ namespace BattleshipLite
 				Console.Write($"Where do you want to place ship number { model.ShipLocations.Count + 1}: ");  
 				string location = Console.ReadLine();
 
-				// bool isValidLocation = GameLogic.PlaceShip(model, location); Debugging - 05. Comment this
-				bool isValidLocation = false;  // Debugging - 06. add bool isValidLocation to false
+				bool isValidLocation = false;  
 
 				try
 				{
-					isValidLocation = GameLogic.PlaceShip(model, location);  // Debugging - 07.Copy this from commented code above 05.
-				}                                                           //  Debugging - 08. Surround with tru catch snippet
-				catch (Exception ex)   // Debugging - 09. Add 'ex' to Exception
+					isValidLocation = GameLogic.PlaceShip(model, location);  
+				}                                                          
+				catch (Exception ex)   
 				{
-					//throw;
-					Console.WriteLine("Error: " + ex.Message);   // Debugging - 10. Add print out 'ex' message with string interpolation.
+					Console.WriteLine("Error: " + ex.Message);   
 				} 
-
 
 				if (isValidLocation == false) 
 				{
