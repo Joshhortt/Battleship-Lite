@@ -160,9 +160,22 @@ namespace BattleshipLiteLibrary
 			return (row, column);  // 8. return 'Tuple'.
 		}
 
-		public static bool ValidateShot(PlayerInfoModel activePlayer, string row, int column) 
+		public static bool ValidateShot(PlayerInfoModel player, string row, int column)  // 1. change parameter 'activePlayer' in this method to just 'player',
 		{
-			throw new NotImplementedException();
+			// 0. throw new NotImplementedException();
+			bool isValidShot = false;  // 1. add boolean = false;
+
+			foreach (var gridSpot in player.ShotGrid)  // 2. loop though every Spot in spot Grid.
+			{
+				if (gridSpot.SpotLetter == row.ToUpper() && gridSpot.SpotNumber == column)   // 3. Comparing Uppercase to Uppercase 
+				{
+					if(gridSpot.Status == GridSpotStatus.Empty)  // 4. If we find that spot, and it's empty then we re going to
+					{
+						isValidShot = true;  // 5. validate if it's true
+					}
+				}
+			}
+			return isValidShot;  // 6. return statement.
 		}
 
 		public static bool IdentifyShowResult(PlayerInfoModel opponentPlayer, string row, int column)  
