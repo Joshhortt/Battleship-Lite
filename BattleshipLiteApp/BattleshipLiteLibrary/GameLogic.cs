@@ -178,9 +178,19 @@ namespace BattleshipLiteLibrary
 			return isValidShot;  // 6. return statement.
 		}
 
-		public static bool IdentifyShowResult(PlayerInfoModel opponentPlayer, string row, int column)  
+		public static bool IdentifyShowResult(PlayerInfoModel opponentPlayer, string row, int column)
 		{
-			throw new NotImplementedException();
+			// 0. throw new NotImplementedException();
+			bool isAHit = false;  // 1. add boolean = false;
+
+			foreach (var ship in opponentPlayer.ShipLocations)  // 2. loop though every opponent player ship in ship locations.
+			{
+				if (ship.SpotLetter == row.ToUpper() && ship.SpotNumber == column)   // 4. Comparing Uppercase to Uppercase 
+				{
+					isAHit = true; // 5. 
+				}
+			}
+			return isAHit;  // 6. return statement.
 		}
 
 		public static void MarkShotResult(PlayerInfoModel activePlayer, string row, int column, bool isAHit) 
