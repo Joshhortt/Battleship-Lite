@@ -1,4 +1,4 @@
-﻿// IV -Wire up the logic - Implement logic here
+﻿// V - Debugging & Testing
 using BattleshipLiteLibrary.Models;
 using System;
 using System.Collections.Generic;
@@ -53,166 +53,145 @@ namespace BattleshipLiteLibrary
 
 		public static bool PlaceShip(PlayerInfoModel model, string location) 
 		{
-			// 0. throw new NotImplementedException();
+			bool output = false; 
 
-			bool output = false; // 11. add boolean = false
+			(string row, int column) = SplitShotIntoRowAndColumn(location);
 
-			(string row, int column) = SplitShotIntoRowAndColumn(location); // 1. Copy parameters of row and column from 'SplitShotIntoRowAndColumn' method.
+			bool isValidLocation = ValidateGridLocation(model, row, column);   
+			bool isSpotOpen = ValidateShipLocation(model, row, column);   
 
-			bool isValidLocation = ValidateGridLocation(model, row, column);   // 6. Validation is going to determine if it on the grid. 
-																			   // Created from here a method below.
-
-			bool isSpotOpen = ValidateShipLocation(model, row, column);   // 8. Validation is going to determine if it on right grid spot or not. 
-																		  // Looking at ships that already been placed. Is there already a ship here?
-																		  // Created from here a method below.
-
-			if (isValidLocation && isSpotOpen)  // 10. surround (2.,3.,4., and 5.) with if snippet
+			if (isValidLocation && isSpotOpen)  
 			{
-				model.ShipLocations.Add(new GridSpotModel  // 2. 
+				model.ShipLocations.Add(new GridSpotModel 
 				{
-					SpotLetter = row.ToUpper(),  // 3.  add ToUpper
-					SpotNumber = column,  // 4. 
-					Status = GridSpotStatus.Ship  // 5. there's a ship here that is not sunk
+					SpotLetter = row.ToUpper(),  
+					SpotNumber = column, 
+					Status = GridSpotStatus.Ship  
 				});
-				output = true; // 12. bool output (true - place ship)
+				output = true; 
 			}
-			return output;  // 13. return statement (false -  do nothing)
+			return output;  
 		}
 
-		private static bool ValidateShipLocation(PlayerInfoModel model, string row, int column)  // method created 'PlaceShip 'from 8..
+		private static bool ValidateShipLocation(PlayerInfoModel model, string row, int column) 
 		{
-			// 0. throw new NotImplementedException();
+			bool isValidLocation = true;  
 
-			bool isValidLocation = true;  // 1. add boolean = true;
-
-			foreach (var ship in model.ShipLocations)  // 2. loop though every ship in ship locations.
+			foreach (var ship in model.ShipLocations) 
 			{
-				if (ship.SpotLetter == row.ToUpper() && ship.SpotNumber == column)   // 4. Comparing Uppercase to Uppercase 
+				if (ship.SpotLetter == row.ToUpper() && ship.SpotNumber == column)  
 				{
-					isValidLocation = false; // 5. If row and column match, then it's a invalid location, because there's already a ship.
+					isValidLocation = false;
 				}
 			}
-			return isValidLocation;  // 6. return statement.
+			return isValidLocation;  
 		}
 
-		private static bool ValidateGridLocation(PlayerInfoModel model, string row, int column)  // method created 'PlaceShip'from 6.
+		private static bool ValidateGridLocation(PlayerInfoModel model, string row, int column) 
 		{
-			// 0. throw new NotImplementedException();
+			bool isValidLocation = false;  
 
-			bool isValidLocation = false;  // 1. add boolean = false;
-
-			foreach (var ship in model.ShotGrid)  // 2. loop though every ship in shot grid.
+			foreach (var ship in model.ShotGrid)  
 			{
-				if (ship.SpotLetter == row.ToUpper() && ship.SpotNumber == column)   // 4. Comparing Uppercase to Uppercase 
+				if (ship.SpotLetter == row.ToUpper() && ship.SpotNumber == column) 
 				{
-					isValidLocation = true; // 5. If row and column match, then it's a valid location, because it's on the grid.
+					isValidLocation = true; 
 				}
 			}
-			return isValidLocation;  // 6. return statement.
+			return isValidLocation;  
 		}
 
-		public static bool PlayerStillActive(PlayerInfoModel player)   // 1. change parameter 'opponentPlayer' in this method to just 'player', 
-		{														      //  it won´t affect functionality, it's just the renaming for this particular method.
-			// 0. throw new NotImplementedException();
+		public static bool PlayerStillActive(PlayerInfoModel player)  
+		{	
+			bool isActive = false; 
 
-			bool isActive = false; // 2. If player is NOT active, means does not have any ship.
-
-			foreach (var ship in player.ShipLocations )  // 3. For each ship in ship locations.
+			foreach (var ship in player.ShipLocations )  
 			{
-				if (ship.Status != GridSpotStatus.Sunk)   // 4. If it is NOT sunk.
+				if (ship.Status != GridSpotStatus.Sunk)  
 				{
-					isActive = true; // 5. Then the player is still active at least with one ship.
+					isActive = true;
 				}
 			}
-			return isActive;  // 6. return statement.
+			return isActive;  
 		}
 
-		public static int GetShotCount(PlayerInfoModel player)   // 1. change parameter 'winner' in this method to just 'player', 
-		{                                                        //  it won´t affect functionality, it's just the renaming for this particular method.
-																 // 0. throw new NotImplementedException();
-			int shotCount = 0;  // 2. starting point shot count will be zero.
+		public static int GetShotCount(PlayerInfoModel player)   
+		{                                                        
+			int shotCount = 0;  
 
-			foreach (var shot in player.ShotGrid)  // 3. for each shot player in shot grid
+			foreach (var shot in player.ShotGrid)  
 			{
-				if (shot.Status != GridSpotStatus.Empty)   // 4. they either have taken a shot or missed. 
+				if (shot.Status != GridSpotStatus.Empty)  
 				{
-					shotCount += 1; // 5. Adds one to our shot count
+					shotCount += 1; 
 				}
 			}
-			return shotCount;  // 6. return statement.
+			return shotCount;  
 
 		}
 
 		public static (string row, int column) SplitShotIntoRowAndColumn(string shot)  
 		{
-			// 0. throw new NotImplementedException();
+			string row = ""; 
+			int column = 0;  
 
-			string row = "";  // 2.
-			int column = 0;  // 3.
-
-			if (shot.Length != 2)  // 5.
+			if (shot.Length != 2)  
 			{
-				throw new ArgumentException("This was asn invalid shot type", "shot");  // 6. 
+				throw new ArgumentException("This was asn invalid shot type", "shot");  
 			}
 
-			char[] shotArray = shot.ToArray();  // 1. 
+			char[] shotArray = shot.ToArray(); 
 
-			row = shotArray[0].ToString();  // 4.
-			column = int.Parse(shotArray[1].ToString());  // 7. 
+			row = shotArray[0].ToString();  
+			column = int.Parse(shotArray[1].ToString());  
 
-			return (row, column);  // 8. return 'Tuple'.
+			return (row, column);  
 		}
 
-		public static bool ValidateShot(PlayerInfoModel player, string row, int column)  // 1. change parameter 'activePlayer' in this method to just 'player',
+		public static bool ValidateShot(PlayerInfoModel player, string row, int column)  
 		{
-			// 0. throw new NotImplementedException();
+			bool isValidShot = false;  
 
-			bool isValidShot = false;  // 1. add boolean = false;
-
-			foreach (var gridSpot in player.ShotGrid)  // 2. loop though every Spot in spot Grid.
+			foreach (var gridSpot in player.ShotGrid) 
 			{
-				if (gridSpot.SpotLetter == row.ToUpper() && gridSpot.SpotNumber == column)   // 3. Comparing Uppercase to Uppercase 
+				if (gridSpot.SpotLetter == row.ToUpper() && gridSpot.SpotNumber == column)  
 				{
-					if(gridSpot.Status == GridSpotStatus.Empty)  // 4. If we find that spot, and it's empty then we re going to
+					if(gridSpot.Status == GridSpotStatus.Empty) 
 					{
-						isValidShot = true;  // 5. validate if it's true
+						isValidShot = true; 
 					}
 				}
 			}
-			return isValidShot;  // 6. return statement.
+			return isValidShot;  
 		}
 
 		public static bool IdentifyShowResult(PlayerInfoModel opponentPlayer, string row, int column)
 		{
-			// 0. throw new NotImplementedException();
+			bool isAHit = false; 
 
-			bool isAHit = false;  // 1. add boolean = false;
-
-			foreach (var ship in opponentPlayer.ShipLocations)  // 2. loop though every opponent player ship in ship locations.
+			foreach (var ship in opponentPlayer.ShipLocations)  
 			{
-				if (ship.SpotLetter == row.ToUpper() && ship.SpotNumber == column)   // 4. Comparing Uppercase to Uppercase 
+				if (ship.SpotLetter == row.ToUpper() && ship.SpotNumber == column)  
 				{
-					isAHit = true; // 5. 
+					isAHit = true; 
 				}
 			}
-			return isAHit;  // 6. return statement.
+			return isAHit; 
 		}
 
-		public static void MarkShotResult(PlayerInfoModel player, string row, int column, bool isAHit) // 1. change parameter 'activePlayer' in this method to just 'player'
+		public static void MarkShotResult(PlayerInfoModel player, string row, int column, bool isAHit)
 		{
-			// 0. throw new NotImplementedException();
-			
-			foreach (var gridSpot in player.ShotGrid)  // 2. loop though every opponent player ship in ship locations.
+			foreach (var gridSpot in player.ShotGrid)  
 			{
-				if (gridSpot.SpotLetter == row.ToUpper() && gridSpot.SpotNumber == column)   // 3. if theat spot on the grid that matches my row and column
+				if (gridSpot.SpotLetter == row.ToUpper() && gridSpot.SpotNumber == column)  
 				{
-					if(isAHit)  // 4. if it's a hit
+					if(isAHit)  
 					{
-						gridSpot.Status = GridSpotStatus.Hit;  // 5. marking it as a Hit or
+						gridSpot.Status = GridSpotStatus.Hit;  
 					}
 					else
 					{
-						gridSpot.Status = GridSpotStatus.Miss;  // 6. ... a Miss
+						gridSpot.Status = GridSpotStatus.Miss; 
 					}
 				}
 			}

@@ -1,4 +1,4 @@
-﻿// IV -Wire up the logic
+﻿// V - Debugging & Testing
 using BattleshipLiteLibrary;
 using BattleshipLiteLibrary.Models;
 using System;
