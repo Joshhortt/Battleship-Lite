@@ -193,10 +193,26 @@ namespace BattleshipLiteLibrary
 			return isAHit;  // 6. return statement.
 		}
 
-		public static void MarkShotResult(PlayerInfoModel activePlayer, string row, int column, bool isAHit) 
+		public static void MarkShotResult(PlayerInfoModel player, string row, int column, bool isAHit) // 1. change parameter 'activePlayer' in this method to just 'player'
 		{
-			throw new NotImplementedException();
+			// 0. throw new NotImplementedException();
+			
+			foreach (var gridSpot in player.ShotGrid)  // 2. loop though every opponent player ship in ship locations.
+			{
+				if (gridSpot.SpotLetter == row.ToUpper() && gridSpot.SpotNumber == column)   // 3. if theat spot on the grid that matches my row and column
+				{
+					if(isAHit)  // 4. if it's a hit
+					{
+						gridSpot.Status = GridSpotStatus.Hit;  // 5. marking it as a Hit or
+					}
+					else
+					{
+						gridSpot.Status = GridSpotStatus.Miss;  // 6. ... a Miss
+					}
+				}
+			}
 		}
+
 	}
 }
 
