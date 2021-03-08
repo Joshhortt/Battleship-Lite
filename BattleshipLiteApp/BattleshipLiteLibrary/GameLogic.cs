@@ -82,19 +82,17 @@ namespace BattleshipLiteLibrary
 		private static bool ValidateShipLocation(PlayerInfoModel model, string row, int column)  // method created 'PlaceShip 'from 8..
 		{
 			// 0. throw new NotImplementedException();
-			bool isValidLocation = false;  // 1. add boolean = false;
+			bool isValidLocation = true;  // 1. add boolean = true;
 
 			foreach (var ship in model.ShipLocations)  // 2. loop though every ship in ship locations.
 			{
 				if (ship.SpotLetter == row.ToUpper() && ship.SpotNumber == column)   // 4. Comparing Uppercase to Uppercase 
 				{
-					isValidLocation = false; // 5. If row and column match, then it's a invalid location, beacuse there's already a ship here.
+					isValidLocation = false; // 5. If row and column match, then it's a invalid location, because there's already a ship.
 				}
 			}
 			return isValidLocation;  // 6. return statement.
 		}
-
-	}
 
 		private static bool ValidateGridLocation(PlayerInfoModel model, string row, int column)  // method created 'PlaceShip'from 6.
 		{
