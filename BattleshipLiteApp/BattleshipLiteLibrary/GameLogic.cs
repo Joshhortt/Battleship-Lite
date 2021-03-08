@@ -142,8 +142,22 @@ namespace BattleshipLiteLibrary
 
 		public static (string row, int column) SplitShotIntoRowAndColumn(string shot)  
 		{
-		throw new NotImplementedException();
-		
+			// 0. throw new NotImplementedException();
+
+			string row = "";  // 2.
+			int column = 0;  // 3.
+
+			if (shot.Length != 2)  // 5.
+			{
+				throw new ArgumentException("This was asn invalid shot type", "shot");  // 6. 
+			}
+
+			char[] shotArray = shot.ToArray();  // 1. 
+
+			row = shotArray[0].ToString();  // 4.
+			column = int.Parse(shotArray[1].ToString());  // 7. 
+
+			return (row, column);  // 8. return 'Tuple'.
 		}
 
 		public static bool ValidateShot(PlayerInfoModel activePlayer, string row, int column) 
