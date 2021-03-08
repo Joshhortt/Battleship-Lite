@@ -1,4 +1,4 @@
-﻿
+﻿// IV -Wire up the logic - Implement logic here
 using BattleshipLiteLibrary.Models;
 using System;
 using System.Collections.Generic;
@@ -56,9 +56,19 @@ namespace BattleshipLiteLibrary
 			throw new NotImplementedException();
 		}
 
-		public static bool PlayerStillActive(PlayerInfoModel opponentPlayer)    
-		{
-			throw new NotImplementedException();
+		public static bool PlayerStillActive(PlayerInfoModel player)   // 1. change parameter 'opponentPlayer' in this method to just 'player', 
+		{														   //  it won´t affect functionality, it's just the renaming for this particular method.
+			// 0. throw new NotImplementedException();
+			bool isActive = false; // 2. If player is NOT active, means does not have any ship.
+
+			foreach (var ship in player.ShipLocations )  // 3. For each ship in ship locations.
+			{
+				if (ship.Status != GridSpotStatus.Sunk)   // 4. If it is NOT sunk.
+				{
+					isActive = true; // 5. Then the player is still active at least with one ship.
+				}
+			}
+			return isActive;  // 6. return statement.
 		}
 
 		public static int GetShotCount(PlayerInfoModel winner)  
