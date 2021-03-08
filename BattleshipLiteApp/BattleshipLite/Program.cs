@@ -76,9 +76,25 @@ namespace BattleshipLite
 				}
 			} while (isValidShot == false);
 
-			bool isAHit = GameLogic.IdentifyShowResult(opponentPlayer, row, column);  
-			
-			GameLogic.MarkShotResult(activePlayer, row, column, isAHit);  
+			bool isAHit = GameLogic.IdentifyShotResult(opponentPlayer, row, column);
+		
+			GameLogic.MarkShotResult(activePlayer, row, column, isAHit);
+			DisplayShotResult(row, column, isAHit);   // Debugging - 16.txt -  3.  To tell us the result of the shot.
+													  // Create method below
+		}
+
+		private static void DisplayShotResult(string row, int column, bool isAHit)   //  Debugging - 17.txt -  3. Method created from 16.
+		{
+			//throw new NotImplementedException();
+			if(isAHit) // Debugging - 18.txt -  3.  if is it a hit
+			{
+				Console.WriteLine($"{ row } { column } is a Hit!"); // Debugging - 19.txt -  3.  string interpolation
+			}
+			else
+			{
+				Console.WriteLine($"{ row } { column } is a Miss!"); // Debugging - 20.txt -  3.  string interpolation
+			}
+			Console.WriteLine();  // Debugging - 3.  txt -  3. add blank line
 		}
 
 		private static string AskForShot(PlayerInfoModel player)  //   Debugging - 14. txt - 2. Pass in PlayerInfoModel player

@@ -165,7 +165,7 @@ namespace BattleshipLiteLibrary
 			return isValidShot;  
 		}
 
-		public static bool IdentifyShowResult(PlayerInfoModel opponentPlayer, string row, int column)
+		public static bool IdentifyShotResult(PlayerInfoModel opponentPlayer, string row, int column)
 		{
 			bool isAHit = false; 
 
