@@ -57,7 +57,7 @@ namespace BattleshipLiteLibrary
 		}
 
 		public static bool PlayerStillActive(PlayerInfoModel player)   // 1. change parameter 'opponentPlayer' in this method to just 'player', 
-		{														   //  it won´t affect functionality, it's just the renaming for this particular method.
+		{														      //  it won´t affect functionality, it's just the renaming for this particular method.
 			// 0. throw new NotImplementedException();
 			bool isActive = false; // 2. If player is NOT active, means does not have any ship.
 
@@ -71,14 +71,26 @@ namespace BattleshipLiteLibrary
 			return isActive;  // 6. return statement.
 		}
 
-		public static int GetShotCount(PlayerInfoModel winner)  
-		{
-			throw new NotImplementedException();
+		public static int GetShotCount(PlayerInfoModel player)   // 1. change parameter 'winner' in this method to just 'player', 
+		{                                                        //  it won´t affect functionality, it's just the renaming for this particular method.
+																 // 0. throw new NotImplementedException();
+			int shotCount = 0;  // 2. starting point shot count will be zero.
+
+			foreach (var shot in player.ShotGrid)  // 3. for each shot player in shot grid
+			{
+				if (shot.Status != GridSpotStatus.Empty)   // 4. they either have taken a shot or missed. 
+				{
+					shotCount += 1; // 5. Adds one to our shot count
+				}
+			}
+			return shotCount;  // 6. return statement.
+
 		}
 
 		public static (string row, int column) SplitShotIntoRowAndColumn(string shot)  
 		{
-			throw new NotImplementedException();
+		throw new NotImplementedException();
+		
 		}
 
 		public static bool ValidateShot(PlayerInfoModel activePlayer, string row, int column) 
