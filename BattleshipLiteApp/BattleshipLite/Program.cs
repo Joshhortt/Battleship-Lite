@@ -56,7 +56,7 @@ namespace BattleshipLite
 
 			do
 			{
-				string shot = AskForShot();
+				string shot = AskForShot(activePlayer);  //   Debugging - 13. txt - 2. Pass in activePlayer
 
 				try
 				{
@@ -67,7 +67,7 @@ namespace BattleshipLite
 				{
 					//throw;
 
-					isValidShot = false;
+					isValidShot = false;  // // Debugging - 04. Removed Error message and add bool
 				}
 					
 				if (isValidShot == false)
@@ -81,9 +81,9 @@ namespace BattleshipLite
 			GameLogic.MarkShotResult(activePlayer, row, column, isAHit);  
 		}
 
-		private static string AskForShot()  
+		private static string AskForShot(PlayerInfoModel player)  //   Debugging - 14. txt - 2. Pass in PlayerInfoModel player
 		{
-			Console.Write("Please enter your shot selection: "); 
+			Console.Write($"{player.UserName }, Please enter your shot selection: ");  //   Debugging - 15. txt - 2. Add string interpolation
 			string output = Console.ReadLine();  
 
 			return output; 
@@ -116,6 +116,8 @@ namespace BattleshipLite
 				else
 					Console.Write(" ? "); 
 			}
+			Console.WriteLine();  // Debugging - 11. txt - 1. After the grid displays, we need to empty lines. (Console.WriteLine)
+			Console.WriteLine();  // Debugging - 12.txt -  1. After the grid displays, we need to empty lines. (Console.WriteLine)
 		}
 
 		private static void WelcomeMessage() 
