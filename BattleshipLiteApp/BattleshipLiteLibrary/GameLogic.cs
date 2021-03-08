@@ -82,6 +82,7 @@ namespace BattleshipLiteLibrary
 		private static bool ValidateShipLocation(PlayerInfoModel model, string row, int column)  // method created 'PlaceShip 'from 8..
 		{
 			// 0. throw new NotImplementedException();
+
 			bool isValidLocation = true;  // 1. add boolean = true;
 
 			foreach (var ship in model.ShipLocations)  // 2. loop though every ship in ship locations.
@@ -97,6 +98,7 @@ namespace BattleshipLiteLibrary
 		private static bool ValidateGridLocation(PlayerInfoModel model, string row, int column)  // method created 'PlaceShip'from 6.
 		{
 			// 0. throw new NotImplementedException();
+
 			bool isValidLocation = false;  // 1. add boolean = false;
 
 			foreach (var ship in model.ShotGrid)  // 2. loop though every ship in shot grid.
@@ -112,6 +114,7 @@ namespace BattleshipLiteLibrary
 		public static bool PlayerStillActive(PlayerInfoModel player)   // 1. change parameter 'opponentPlayer' in this method to just 'player', 
 		{														      //  it won´t affect functionality, it's just the renaming for this particular method.
 			// 0. throw new NotImplementedException();
+
 			bool isActive = false; // 2. If player is NOT active, means does not have any ship.
 
 			foreach (var ship in player.ShipLocations )  // 3. For each ship in ship locations.
@@ -163,6 +166,7 @@ namespace BattleshipLiteLibrary
 		public static bool ValidateShot(PlayerInfoModel player, string row, int column)  // 1. change parameter 'activePlayer' in this method to just 'player',
 		{
 			// 0. throw new NotImplementedException();
+
 			bool isValidShot = false;  // 1. add boolean = false;
 
 			foreach (var gridSpot in player.ShotGrid)  // 2. loop though every Spot in spot Grid.
@@ -181,6 +185,7 @@ namespace BattleshipLiteLibrary
 		public static bool IdentifyShowResult(PlayerInfoModel opponentPlayer, string row, int column)
 		{
 			// 0. throw new NotImplementedException();
+
 			bool isAHit = false;  // 1. add boolean = false;
 
 			foreach (var ship in opponentPlayer.ShipLocations)  // 2. loop though every opponent player ship in ship locations.
@@ -212,7 +217,6 @@ namespace BattleshipLiteLibrary
 				}
 			}
 		}
-
 	}
 }
 
