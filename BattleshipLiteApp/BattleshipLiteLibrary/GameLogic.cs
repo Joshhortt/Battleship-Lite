@@ -137,7 +137,7 @@ namespace BattleshipLiteLibrary
 
 			if (shot.Length != 2)  
 			{
-				throw new ArgumentException("This was asn invalid shot type", "shot");  
+				throw new ArgumentException("This was an invalid shot type", "shot");  
 			}
 
 			char[] shotArray = shot.ToArray(); 
@@ -173,7 +173,8 @@ namespace BattleshipLiteLibrary
 			{
 				if (ship.SpotLetter == row.ToUpper() && ship.SpotNumber == column)  
 				{
-					isAHit = true; 
+					isAHit = true;
+					ship.Status = GridSpotStatus.Sunk;  // Debugging - 01.the ship has being sunk
 				}
 			}
 			return isAHit; 

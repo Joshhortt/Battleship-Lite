@@ -21,21 +21,14 @@ namespace BattleshipLite
 
 			do 
 			{
-				// Display grid from activePlayer on where they fired
 				DisplayShotGrid(activePlayer); 
-			                                    
-				// Ask activePlayer for a shot
-				// Determine if it is a valid shot
-				// Determine shot results
+			                                   
 				RecordPlayerShot(activePlayer, opponentPlayer);   
 				
-				// Determine if the game is over
 				bool doesGameContinue = GameLogic.PlayerStillActive(opponentPlayer);  
 																					 
-				// If over set activePlayer as the winner
 				if (doesGameContinue == true)  
 				{
-				// swap positions (activePlayer to opponentPlayer)
 					(activePlayer, opponentPlayer) = (opponentPlayer, activePlayer); 
 				}
 				else
@@ -59,31 +52,32 @@ namespace BattleshipLite
 		{
 			bool isValidShot = false;  
 			string row = "";          
-			int column = 0;         
+			int column = 0;
 
 			do
 			{
-				string shot = AskForShot(); 
+				string shot = AskForShot();
 
-				// Determine what row and columnms that is  - split it apart
-				(row, column) = GameLogic.SplitShotIntoRowAndColumn(shot);  
-																		    
-				// Determine if that is a valid result	
-				isValidShot = GameLogic.ValidateShot(activePlayer, row, column);  
-
-				// Show a warning message
-				if (isValidShot == false) 
+				try
 				{
-					Console.WriteLine("Invalid Shot Location. Please try again! ");  
+					(row, column) = GameLogic.SplitShotIntoRowAndColumn(shot);  // Debugging - 02. Sourround these two lines with 'try' and 'catch'.
+					isValidShot = GameLogic.ValidateShot(activePlayer, row, column);
 				}
+				catch (Exception)  // Debugging - 03. Add 'ex' to Exception
+				{
+					//throw;
 
-				// Go back to the beginning if not a valid shot
+					isValidShot = false;
+				}
+					
+				if (isValidShot == false)
+				{
+					Console.WriteLine("Invalid Shot Location. Please try again! ");
+				}
 			} while (isValidShot == false);
 
-			// Determine shot results
 			bool isAHit = GameLogic.IdentifyShowResult(opponentPlayer, row, column);  
-
-			// Record results 
+			
 			GameLogic.MarkShotResult(activePlayer, row, column, isAHit);  
 		}
 
@@ -161,10 +155,23 @@ namespace BattleshipLite
 			do 
 			{
 				Console.Write($"Where do you want to place ship number { model.ShipLocations.Count + 1}: ");  
-				string location = Console.ReadLine();   
+				string location = Console.ReadLine();
 
-				bool isValidLocation = GameLogic.PlaceShip(model, location);   
-				if(isValidLocation == false) 
+				// bool isValidLocation = GameLogic.PlaceShip(model, location); Debugging - 05. Comment this
+				bool isValidLocation = false;  // Debugging - 06. add bool isValidLocation to false
+
+				try
+				{
+					isValidLocation = GameLogic.PlaceShip(model, location);  // Debugging - 07.Copy this from commented code above 05.
+				}                                                           //  Debugging - 08. Surround with tru catch snippet
+				catch (Exception ex)   // Debugging - 09. Add 'ex' to Exception
+				{
+					//throw;
+					Console.WriteLine("Error: " + ex.Message);   // Debugging - 10. Add print out 'ex' message with string interpolation.
+				} 
+
+
+				if (isValidLocation == false) 
 				{
 					Console.WriteLine("That was not a valid location. Please try again. "); 
 				}
