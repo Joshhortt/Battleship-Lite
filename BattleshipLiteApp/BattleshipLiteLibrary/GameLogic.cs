@@ -70,7 +70,7 @@ namespace BattleshipLiteLibrary
 			{
 				model.ShipLocations.Add(new GridSpotModel  // 2. 
 				{
-					SpotLetter = row,  // 3. 
+					SpotLetter = row.ToUpper(),  // 3.  add ToUpper
 					SpotNumber = column,  // 4. 
 					Status = GridSpotStatus.Ship  // 5. there's a ship here that is not sunk
 				});
@@ -79,12 +79,24 @@ namespace BattleshipLiteLibrary
 			return output;  // 13. return statement (false -  do nothing)
 		}
 
-		private static bool ValidateShipLocation(PlayerInfoModel model, string row, int column)  // 9. method created from 8..
+		private static bool ValidateShipLocation(PlayerInfoModel model, string row, int column)  // method created 'PlaceShip 'from 8..
 		{
-			throw new NotImplementedException();
+			// 0. throw new NotImplementedException();
+			bool isValidLocation = false;  // 1. add boolean = false;
+
+			foreach (var ship in model.ShipLocations)  // 2. loop though every ship in ship locations.
+			{
+				if (ship.SpotLetter == row.ToUpper() && ship.SpotNumber == column)   // 4. Comparing Uppercase to Uppercase 
+				{
+					isValidLocation = false; // 5. If row and column match, then it's a invalid location, beacuse there's already a ship here.
+				}
+			}
+			return isValidLocation;  // 6. return statement.
 		}
 
-		private static bool ValidateGridLocation(PlayerInfoModel model, string row, int column)  // 7. method created from 6.
+	}
+
+		private static bool ValidateGridLocation(PlayerInfoModel model, string row, int column)  // method created 'PlaceShip'from 6.
 		{
 			throw new NotImplementedException();
 		}
