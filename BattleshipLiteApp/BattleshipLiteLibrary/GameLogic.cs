@@ -96,7 +96,17 @@ namespace BattleshipLiteLibrary
 
 		private static bool ValidateGridLocation(PlayerInfoModel model, string row, int column)  // method created 'PlaceShip'from 6.
 		{
-			throw new NotImplementedException();
+			// 0. throw new NotImplementedException();
+			bool isValidLocation = false;  // 1. add boolean = false;
+
+			foreach (var ship in model.ShotGrid)  // 2. loop though every ship in shot grid.
+			{
+				if (ship.SpotLetter == row.ToUpper() && ship.SpotNumber == column)   // 4. Comparing Uppercase to Uppercase 
+				{
+					isValidLocation = true; // 5. If row and column match, then it's a valid location, because it's on the grid.
+				}
+			}
+			return isValidLocation;  // 6. return statement.
 		}
 
 		public static bool PlayerStillActive(PlayerInfoModel player)   // 1. change parameter 'opponentPlayer' in this method to just 'player', 
